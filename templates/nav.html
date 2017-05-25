@@ -1,0 +1,33 @@
+{# 导航栏的内容，页面名称：对应视图的name #}
+<nav class="navbar navbar-inverse navbar-fixed-top">
+    {# 使用 container 使内容居中  #}
+    <div class="container">
+
+        {# 导航栏 标题 与 折叠后的菜单键 #}
+        <div class="navbar-header">
+            {# 折叠后的菜单键，即3个"icon-bar"  #}
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar"
+                    aria-expanded="false" aria-controls="navbar">
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            {# 导航栏标题 #}
+            <span class="navbar-brand">Django试验</span>
+        </div>
+
+        {# 可以折叠的导航栏内容 #}
+        <div id="navbar" class="collapse navbar-collapse">
+            {# 导航栏内容 #}
+            <ul class="nav navbar-nav">
+                {% for name, view in nav.items %}
+                    {% url view as link %}
+                    <li {% ifequal link current_link %} class="active"{% endifequal %}>
+                        <a href="{{ link }} ">{{ name }}</a>
+                    </li>
+                {% endfor %}
+            </ul>
+        </div>
+
+    </div><!-container->
+</nav>

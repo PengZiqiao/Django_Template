@@ -15,12 +15,22 @@
 
 {# body内容 #}
 {% block bootstrap3_content %}
-    {# 页内标题 #}
-    {% block head %}<h3>{{ title }}</h3>{% endblock %}
-    {# 主要内容 #}
-    {% block content %}{% endblock %}
-    {# 网页底部 #}
-    {% block foot %}{% endblock %}
+    {# 导航栏 #}
+    {% block navbar %}{% endblock %}
+
+    <div class="container">
+        {# 页内标题 #}
+        <div class="page-header">
+            <h1>{% block header %}{{ header|safe }}{% endblock %}</h1>
+        </div>
+        {# 主要内容 #}
+        {% block content %}You can start a Django with this template which uses Bootstrap. {% endblock %}
+        {# 网页底部 #}
+        {% block footer %}
+            <hr/>
+            <div class="footer">Copyright 2017 by Peng Ziqiao</div>
+        {% endblock %}
+    </div>
 {% endblock %}
 
 {# body底部脚本 #}
